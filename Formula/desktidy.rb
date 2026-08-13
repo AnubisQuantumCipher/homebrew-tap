@@ -1,14 +1,14 @@
 class Desktidy < Formula
   desc "Your macOS Desktop, organized automatically, with a notification per move"
   homepage "https://github.com/AnubisQuantumCipher/desktidy"
-  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "b1fe4574c971b7c02fb23910ad639ef2dc334d2e4d1695834141469776783d77"
+  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.1.1.tar.gz"
+  sha256 "4d6c54f67d173518ac7e3f1bd3e1b8a02f38e649419c50f256362be94cd2934c"
   license "MIT"
 
   depends_on :macos
 
   def install
-    system "swiftc", "-O", "-parse-as-library", *Dir["src/*.swift"], "-o", "desktidy-sort"
+    system "xcrun", "swiftc", "-O", "-parse-as-library", *Dir["src/*.swift"], "-o", "desktidy-sort"
     system "codesign", "-s", "-", "-i", "com.desktidy.sort", "desktidy-sort"
     bin.install "desktidy-sort"
     bin.install "src/desktidy-cli.sh" => "desktidy"
