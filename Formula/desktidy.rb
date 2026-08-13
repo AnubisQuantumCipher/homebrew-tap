@@ -1,8 +1,8 @@
 class Desktidy < Formula
   desc "Your macOS Desktop, organized automatically, with a notification per move"
   homepage "https://github.com/AnubisQuantumCipher/desktidy"
-  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "4d6c54f67d173518ac7e3f1bd3e1b8a02f38e649419c50f256362be94cd2934c"
+  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.1.2.tar.gz"
+  sha256 "cbf8ea6020f117bd0f6971555aae04a955cda90c8bd93c38e40f80308b15792e"
   license "MIT"
 
   depends_on :macos
