@@ -5,16 +5,16 @@
 class DesktidyR2Preview < Formula
   desc "Native DeskTidy developer preview built locally from source"
   homepage "https://github.com/AnubisQuantumCipher/desktidy"
-  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.2.0-preview.1.tar.gz"
-  version "1.2.0-preview.1"
-  sha256 "847789b256ca51425aa28bf2d7e4bdee97dbbc758cf17da2b667d54fdb49a9ba"
+  url "https://github.com/AnubisQuantumCipher/desktidy/archive/refs/tags/v1.2.0-preview.2.tar.gz"
+  version "1.2.0-preview.2"
+  sha256 "15d46b3c829a1af2e212b52f00888198ab51ef0d24838d71edca73918df076a8"
   license "MIT"
 
   depends_on arch: :arm64
   depends_on macos: :sonoma
 
   def install
-    ENV["DESKTIDY_SOURCE_COMMIT"] = "19355ff83c610fb4251af2bc593d0460c3e894eb"
+    ENV["DESKTIDY_SOURCE_COMMIT"] = "8b6c09a9b85b5ef382bb76d0e0df7e3c1f7f2a24"
     system "scripts/build-app.sh", buildpath/"build"
     libexec.install "build/DeskTidy.app"
     (bin/"desktidy-r2-preview").write <<~SH
@@ -39,7 +39,7 @@ class DesktidyR2Preview < Formula
 
   test do
     build = JSON.parse((libexec/"DeskTidy.app/Contents/Resources/DeskTidyBuild.json").read)
-    assert_equal "19355ff83c610fb4251af2bc593d0460c3e894eb", build.fetch("sourceCommit")
+    assert_equal "8b6c09a9b85b5ef382bb76d0e0df7e3c1f7f2a24", build.fetch("sourceCommit")
     system "/usr/bin/codesign", "--verify", "--deep", "--strict", libexec/"DeskTidy.app"
   end
 end
